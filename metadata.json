@@ -1,0 +1,6 @@
+{
+  "name": "KPI Métricas & Auditoría de Leads Multicanal",
+  "description": "Sistema de consulta en caliente y auditoría de cumplimiento de llamadas (PBX, Celular, WhatsApp, Teams) contra Leads Calificados y No Calificados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
