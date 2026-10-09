@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  kpi-auditoria-red:
+    container_name: kpi-auditoria-red
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kpi-auditoria-red:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - TZ=America/El_Salvador
+    volumes:
+      # Persistencia de catálogo de usuarios/contraseñas, reuniones Teams y estados KPI
+      - ./data:/app/data
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 192M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

@@ -1102,6 +1102,19 @@ async function startServer() {
   });
 
   /**
+   * Healthcheck del contenedor Docker
+   */
+  app.get('/api/health', (_req, res) => {
+    const mem = process.memoryUsage();
+    res.json({
+      status: 'ok',
+      uptime_segundos: Math.round(process.uptime()),
+      memoria_rss_mb: Math.round((mem.rss / 1024 / 1024) * 10) / 10,
+      timestamp: new Date().toISOString(),
+    });
+  });
+
+  /**
    * Guardar cambios de KPIs (SLA / Retroalimentación) directamente en el Backend
    */
   app.patch('/api/leads/:id', (req, res) => {
